@@ -1,0 +1,27 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - workflow-data:/data
+    environment:
+      - LLM_PROVIDER=mock # set to "openai" and provide OPENAI_API_KEY for a real provider
+      - LOG_LEVEL=INFO
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    # The built SPA calls `/api/...` relative to its own origin (see
+    # frontend/src/api/client.ts's default base URL) — in this compose setup
+    # that means a reverse proxy from :8080/api to the api service would be
+    # needed for the two-container demo to talk to each other out of the box.
+    # For local development, `npm run dev` (frontend/vite.config.ts's proxy)
+    # is the simpler path; this service mainly demonstrates that the built
+    # static bundle is deployable as its own container.
+
+volumes:
+  workflow-data:
