@@ -142,7 +142,6 @@ python -m workflow_engine.demo
 
 Isso constrói e executa exatamente esse workflow contra um SQLite temporário usando `MockLLMProvider`, imprimindo cada evento conforme acontece, resolvendo a aprovação automaticamente, e terminando ao dar replay no log e confirmar que bate com a execução ao vivo.
 
-> **Screenshots**: este README não embute imagens de screenshot — o ambiente onde este projeto foi feito não tem como salvar uma captura de tela do navegador como arquivo committável. Os fluxos acima (canvas, `WAITING` com o painel de aprovação, `COMPLETED`, a timeline de eventos e o replay) foram todos rodados ao vivo contra uma instância real e verificados visualmente durante o desenvolvimento; a pasta `docs/images/` está pronta para receber capturas reais (veja [Quick start](#quick-start) — reproduzir leva menos de dois minutos).
 
 ## Quick start
 
